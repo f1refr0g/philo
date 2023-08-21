@@ -1,0 +1,10 @@
+Param
+
+number_of_philosopher cant be 0
+time_to_die in ms (int size)
+time_to_eat in ms (int size)
+time_to_sleep in ms (int size)
+**number_of_time_each_philosopher_must_eat (int qui determine le nombre de fois qun philo dois manger)
+
+Chaque philo nombre between 1 and number_of_philosopher
+philo assis entre n - 1 et n + 1

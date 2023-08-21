@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/08/13 17:45:15 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/08/21 09:20:15 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = philo
 S = srcs/
 SRCS_FILES = philo.c\
 			parsing.c\
+			utils.c\
 
 
 SRCS = $(addprefix $S, $(SRCS_FILES))
@@ -52,8 +53,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$R"
-	@echo "$W"
 
 re: fclean all
 
