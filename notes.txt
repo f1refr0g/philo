@@ -8,3 +8,6 @@ time_to_sleep in ms (int size)
 
 Chaque philo nombre between 1 and number_of_philosopher
 philo assis entre n - 1 et n + 1
+
+https://github.com/TommyJD93/Philosophers
+
