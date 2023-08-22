@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/21 10:39:32 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:22:34 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,19 @@ int	main(int ac, char **av)
 	data_init(&data, av);
 	print_param(&data);
 	return (0);
+}
+
+t_philo	*philo_init(t_d *data)
+{
+	t_philo philo[data->nbp];
+	int i;
+
+	i = 0;
+	while (i < data->nbp)
+	{
+		philo[i].id = i;
+		philo[i].data = &data;
+		i++;
+	}
+	
 }
