@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/22 09:17:59 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/27 13:40:30 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
+struct s_philo;
 //Data struct to store program parameters.
 // nbp = Number of philo.
 // ttd = time to die.
@@ -28,13 +29,17 @@
 // tts = time to sleep.
 // neat = (optional) number of time philo has to eat.
 typedef struct s_d{
-	int					nbp;
-	int					ttd;
+	int					nphilo;
 	int					tte;
+	int					ttd;
 	int					tts;
 	int					neat;
-
-	pthread_mutex_t		fork;
+	int					dead;
+	struct s_philo		*philo;
+	pthread_t			*task;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		lock;
+	pthread_mutex_t		msg;
 }	t_d;
 
 //id = Philo number around the table
@@ -42,11 +47,17 @@ typedef struct s_d{
 //lm = time of last meal
 typedef struct s_philo{
 	int					id;
-	int					mc;
-	int					lm;
-	
-	t_d					*data;
-	pthread_mutex_t		task;
+	int					mcount;
+	int					status;
+	int					sleep;
+	int					lmeal;
+	int					ttd;
+	int					dead;
+	struct s_d			*data;
+	pthread_t			task;
+	pthread_mutex_t		lfork;
+	pthread_mutex_t		rfork;
+	pthread_mutex_t		lock;
 }	t_philo;
 
 /*Utils.c*/

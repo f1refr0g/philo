@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:11:32 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/21 10:38:33 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/27 13:40:51 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*ft_memset(void *b, int c, size_t len)
 
 void	data_init(t_d *data, char **av)
 {
-	data->nbp = ft_atoi(av[1]);
+	data->nphilo = ft_atoi(av[1]);
 	data->ttd = ft_atoi(av[2]);
 	data->tte = ft_atoi(av[3]);
 	data->tts = ft_atoi(av[4]);
@@ -60,7 +60,7 @@ void	data_init(t_d *data, char **av)
 
 void	print_param(t_d *data)
 {
-	printf("%d\n", data->nbp);
+	printf("%d\n", data->nphilo);
 	printf("%d\n", data->ttd);
 	printf("%d\n", data->tte);
 	printf("%d\n", data->tts);
