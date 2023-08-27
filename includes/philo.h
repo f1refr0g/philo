@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/27 13:40:30 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:37:29 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	validate_args(char **av);
 
 /*Delete at end*/
 void	print_param(t_d *data);
+void	clear_sim(t_d *data);
 
 #endif

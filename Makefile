@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/08/21 09:20:15 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/08/27 16:54:00 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ S = srcs/
 SRCS_FILES = philo.c\
 			parsing.c\
 			utils.c\
+			utils2.c\
 
 
 SRCS = $(addprefix $S, $(SRCS_FILES))
@@ -42,10 +43,10 @@ git:
 	@git push
 
 leaks:
-	@leaks --atExit -- ./philo
+	@leaks --atExit -- ./philo 10 60 60 60
 	
 valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./philo
+	valgrind --leak-check=full --show-leak-kinds=all ./philo 10 60 60 60
 
 clean:
 	@rm -f $(OBJS)
