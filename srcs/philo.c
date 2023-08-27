@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/27 13:44:26 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/27 14:02:29 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,18 @@ void	*task(void *input)
 
 void	philo_init(t_d *data)
 {
-	t_philo philo[data->nphilo];
-	int i;
+	t_philo	*philo;
+	int	i;
 
 	i = 0;
+	philo = malloc(sizeof (t_philo) * data->nphilo);
 	while (i < data->nphilo)
 	{
 		philo[i].id = i + 1;
 		philo[i].data = data;
 		i++;
 	}
+	data->philo = philo;
 }
 
 void	thread_init(t_d *data)
@@ -58,9 +60,10 @@ void	thread_init(t_d *data)
 	int i;
 
 	data->task = malloc((sizeof (pthread_t) * (data->nphilo)));
-	i = 1;
+	i = 0;
 	while (i <= data->nphilo)
 	{
+		data->task[i] = malloc(sizeof (pthread_t));
 		pthread_create(&data->task[i], NULL, &task, &data->philo[i]);
 		i++;
 	}
@@ -69,7 +72,7 @@ void	thread_init(t_d *data)
 int	main(int ac, char **av)
 {
 	t_d	data;
-	// int		i;
+	int		i;
 
 	if (!(ac == 5 || ac == 6))
 		ft_error("Wrong number of arguments.\n");
@@ -79,12 +82,12 @@ int	main(int ac, char **av)
 	philo_init(&data);
 	pthread_mutex_init(&data.lock, NULL);
 	thread_init(&data);
-	// i = 1;
-	// while (i <= data.nphilo)
-	// {
-	// 	pthread_join(data.task[i], NULL);
-	// 	i++;
-	// }
+	i = 0;
+	while (i < data.nphilo)
+	{
+		pthread_join(data.task[i], NULL);
+		i++;
+	}
 	// pthread_mutex_destroy(&data.lock);
 	// print_param(&data);
 	return (0);
