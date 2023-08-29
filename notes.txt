@@ -10,4 +10,14 @@ Chaque philo nombre between 1 and number_of_philosopher
 philo assis entre n - 1 et n + 1
 
 https://github.com/TommyJD93/Philosophers
-
+https://www.youtube.com/watch?v=GNw3RXr-VJk
+https://www.embeddedhow.com/post/debugging-data-race-conditions-using-thread-sanitizer
+Aug 29 at 15:28
+https://www.geeksforgeeks.org/mutex-lock-for-linux-thread-synchronization/
+https://www.geeksforgeeks.org/multithreading-in-c/
+https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-detach-detach-thread
+https://www.ibm.com/docs/en/i/7.3?topic=ssw_ibm_i_73/apis/users_61.html
+https://stackoverflow.com/questions/21248840/example-of-waitpid-in-use
+https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-create-create-thread
+https://linuxhint.com/gettimeofday_c_language/
+https://www.mathworks.com/products/polyspace/static-analysis-notes/what-data-races-how-avoid-during-software-development.html#:~:text=Data%20races%20are%20a%20common,to%20undefined%20or%20unpredictable%20behavior.
