@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 10:50:05 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 12:50:02 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_d{
 	int					tts;
 	int					neat;
 	int					dead;
-	t_philo				philo[200];
+	t_philo				*philo;
 	pthread_t			*task;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		lock;
@@ -57,7 +57,6 @@ typedef struct s_philo{
 	pthread_t			task;
 	pthread_mutex_t		lfork;
 	pthread_mutex_t		rfork;
-	pthread_mutex_t		lock;
 }	t_philo;
 
 /*Utils.c*/
@@ -71,7 +70,9 @@ void	*ft_memset(void *b, int c, size_t len);
 //Set validated args inside struct.
 void	data_init(t_d *data, char **av);
 
-/*Parsing.c*/
+//Action
+void	pick_fork(t_philo *philo);
+void	drop_fork(t_philo *philo);
 
 //Take a string and return it as int.
 int		ft_atoi(const char *str);

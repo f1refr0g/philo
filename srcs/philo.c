@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 10:46:52 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 12:54:25 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ void	*routine(void *input)
 	while (loop)
 	{
 		usleep((philo->data->tte / 2) * 1000);
-		pthread_mutex_lock(&philo->data->lock);
+		// pthread_mutex_lock(&philo->data->lock);
 		if (time < philo->data->nphilo)
 		{
-			printf("Philo id %d\n", philo->id);
+			// printf("Philo id %d\n", philo->id);
+			pick_fork(philo);
+			usleep((philo->data->tte / 2) * 1000);
+			drop_fork(philo);
 			time++;
 		}
 		else
 			loop = 0;
-		pthread_mutex_unlock(&philo->data->lock);
+		// pthread_mutex_unlock(&philo->data->lock);
 	}
 	return (input);
 }
@@ -50,8 +53,16 @@ void	philo_init(t_d *data)
 		ft_error("Maloc error");
 	while (i < data->nphilo)
 	{
+		pthread_mutex_init(&philo[i].rfork, NULL);
 		philo[i].id = i + 1;
 		philo[i].data = data;
+		i++;
+	}
+	philo[0].lfork = philo[i].rfork;
+	i = 1;
+	while (i < data->nphilo)
+	{
+		philo[i].lfork = philo[i - 1].rfork;
 		i++;
 	}
 	data->philo = philo;
