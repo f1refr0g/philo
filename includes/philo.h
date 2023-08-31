@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 10:46:16 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 10:50:05 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
-
+typedef struct		s_philo	t_philo;
 //Data struct to store program parameters.
 // nbp = Number of philo.
 // ttd = time to die.
@@ -35,7 +35,7 @@ typedef struct s_d{
 	int					tts;
 	int					neat;
 	int					dead;
-	struct s_philo		*philo;
+	t_philo				philo[200];
 	pthread_t			*task;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		lock;
