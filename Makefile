@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/08/27 16:54:00 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/08/31 10:22:52 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ leaks:
 	
 valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./philo 10 60 60 60
+
+run: all
+	./philo 10 60 60 60
 
 clean:
 	@rm -f $(OBJS)

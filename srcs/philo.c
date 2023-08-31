@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 09:58:00 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 10:46:52 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*routine(void *input)
 		pthread_mutex_lock(&philo->data->lock);
 		if (time < philo->data->nphilo)
 		{
-			// printf("Philo id %d\n", philo->id);
+			printf("Philo id %d\n", philo->id);
 			time++;
 		}
 		else
@@ -65,15 +65,7 @@ void	thread_init(t_d *data)
 	i = 0;
 	while (i < data->nphilo)
 	{
-		printf("nphilo = %d\nCreating thread nb %d\n", data->nphilo, i);
-		data->task[i] = malloc(sizeof(pthread_t));
-		i++;
-	}
-	i = 0;
-	while (i < data->nphilo)
-	{
 		pthread_create(&data->task[i], NULL, &routine, &data->philo[i]);
-		printf("Thread created sucessfuly id : %d\n", i);
 		i++;
 	}
 }
@@ -98,8 +90,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	pthread_mutex_destroy(&data.lock);
-	printf("clear init\n");
 	clear_sim(&data);
-	printf("clear end\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 09:52:30 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 10:13:55 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	clear_sim(t_d *data)
 	// 	while (i < data->nphilo)
 	// 	{
 	// 		if (data->task[i] != NULL)
-	// 			free(&data->task[i]);
-	// 		printf("free task : %d\n", i);
+	// 		{
+	// 			free(data->task[i]);
+	// 			printf("free task : %d\n", i);
+	// 		}
 	// 		i++;
 	// 	}
 	// }
