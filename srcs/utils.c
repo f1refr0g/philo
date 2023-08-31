@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:11:32 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/27 16:54:10 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:27:18 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	*ft_memset(void *b, int c, size_t len)
 void	data_init(t_d *data, char **av)
 {
 	data->nphilo = ft_atoi(av[1]);
-	printf("dinit : 1 %d\n", data->nphilo);
 	data->ttd = ft_atoi(av[2]);
 	data->tte = ft_atoi(av[3]);
 	data->tts = ft_atoi(av[4]);

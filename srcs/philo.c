@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/27 17:03:11 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:58:00 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*routine(void *input)
 		pthread_mutex_lock(&philo->data->lock);
 		if (time < philo->data->nphilo)
 		{
-			printf("Philo id %d\n", philo->id);
+			// printf("Philo id %d\n", philo->id);
 			time++;
 		}
 		else
@@ -46,6 +46,8 @@ void	philo_init(t_d *data)
 
 	i = 0;
 	philo = malloc(sizeof (t_philo) * data->nphilo);
+	if (philo == NULL)
+		ft_error("Maloc error");
 	while (i < data->nphilo)
 	{
 		philo[i].id = i + 1;
@@ -59,12 +61,19 @@ void	thread_init(t_d *data)
 {
 	int i;
 
-	data->task = malloc((sizeof (pthread_t) * (data->nphilo)));
+	data->task = malloc((sizeof (pthread_t *) * (data->nphilo)));
 	i = 0;
 	while (i < data->nphilo)
 	{
+		printf("nphilo = %d\nCreating thread nb %d\n", data->nphilo, i);
 		data->task[i] = malloc(sizeof(pthread_t));
+		i++;
+	}
+	i = 0;
+	while (i < data->nphilo)
+	{
 		pthread_create(&data->task[i], NULL, &routine, &data->philo[i]);
+		printf("Thread created sucessfuly id : %d\n", i);
 		i++;
 	}
 }
@@ -79,21 +88,18 @@ int	main(int ac, char **av)
 	validate_args(av);
 	ft_memset(&data, 0, sizeof(t_d));
 	data_init(&data, av);
-	printf("1%d\n", data.nphilo);
 	philo_init(&data);
-	printf("2%d\n", data.nphilo);
 	pthread_mutex_init(&data.lock, NULL);
-	printf("3%d\n", data.nphilo);
 	thread_init(&data);
-	printf("4%d\n", data.nphilo);
 	i = 0;
-	printf("outloop%d\n", data.nphilo);
 	while (i < data.nphilo)
 	{
 		pthread_join(data.task[i], NULL);
 		i++;
 	}
-	clear_sim(&data);
 	pthread_mutex_destroy(&data.lock);
+	printf("clear init\n");
+	clear_sim(&data);
+	printf("clear end\n");
 	return (0);
 }

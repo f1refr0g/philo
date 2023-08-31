@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/27 17:04:24 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:52:30 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void	clear_sim(t_d *data)
 {
-	int i;
+	// int i;
 
-	i = 0;
-	if (data->task[i] != NULL)
-	{
-		while (data->task[i]  != NULL)
-		{
-			free(data->task[i]);
-			i++;
-		}
-	}
+	// i = 0;
+	// if (data->task[i] != NULL)
+	// {
+	// 	while (i < data->nphilo)
+	// 	{
+	// 		if (data->task[i] != NULL)
+	// 			free(&data->task[i]);
+	// 		printf("free task : %d\n", i);
+	// 		i++;
+	// 	}
+	// }
+	free(data->task);
 	if (data->philo != NULL)
 		free(data->philo);
-	if (data != NULL)
-		free(data);
+	// if (data != NULL)
+	// 	free(data);
 }
