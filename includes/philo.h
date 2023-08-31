@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 12:50:02 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:51:05 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,15 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
-typedef struct		s_philo	t_philo;
+
+//Philo status
+# define SLEEPING	0
+# define FORK		1
+# define EATING		2
+# define THINKING	3
+# define DEAD		4
+
+typedef struct s_philo	t_philo;
 //Data struct to store program parameters.
 // nbp = Number of philo.
 // ttd = time to die.
@@ -73,6 +81,7 @@ void	data_init(t_d *data, char **av);
 //Action
 void	pick_fork(t_philo *philo);
 void	drop_fork(t_philo *philo);
+void	announcer(int state, t_philo *philo);
 
 //Take a string and return it as int.
 int		ft_atoi(const char *str);

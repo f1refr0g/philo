@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:11:32 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 09:27:18 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:39:00 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,3 @@ void	print_param(t_d *data)
 	printf("%d\n", data->tts);
 	printf("%d\n", data->neat);
 }
-
