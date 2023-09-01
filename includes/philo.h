@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 15:51:05 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 20:49:03 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdbool.h>
-
 
 //Philo status
 # define SLEEPING	0

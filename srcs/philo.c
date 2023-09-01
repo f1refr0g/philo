@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 15:56:46 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/08/31 20:49:02 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	*routine(void *input)
 		usleep((philo->data->tte / 2) * 1000);
 	while (loop)
 	{
-		// usleep((philo->data->tte / 2) * 1000);
 		// pthread_mutex_lock(&philo->data->lock);
 		if (time < philo->data->nphilo)
 		{
-			// printf("Philo id %d\n", philo->id);
 			pick_fork(philo);
 			usleep((philo->data->tte) * 1000);
 			drop_fork(philo);
@@ -45,7 +43,7 @@ void	*routine(void *input)
 void	philo_init(t_d *data)
 {
 	t_philo	*philo;
-	int	i;
+	int		i;
 
 	i = 0;
 	philo = malloc(sizeof (t_philo) * data->nphilo);
@@ -70,7 +68,7 @@ void	philo_init(t_d *data)
 
 void	thread_init(t_d *data)
 {
-	int i;
+	int	i;
 
 	data->task = malloc((sizeof (pthread_t *) * (data->nphilo)));
 	i = 0;
@@ -83,7 +81,7 @@ void	thread_init(t_d *data)
 
 int	main(int ac, char **av)
 {
-	t_d	data;
+	t_d		data;
 	int		i;
 
 	if (!(ac == 5 || ac == 6))

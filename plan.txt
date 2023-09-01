@@ -1,6 +1,5 @@
-Commencencer par lire le pdf de fond en comble et voir quels notions je vais devoir apprendre.
-Evaluer ma deadline selon mes jours restant apres mon push_swap
-Bien definir mon parsing pour ne pas avoir a me casser la tete
-separer le reste du projet en etape.
-Consolider la theorie le soir avant d'aller me coucher.
-Bien commenter mon code ce coup ci et etre mieux structurer.
+A FAIRE :
+Gerer les timestamp
+Gerer les meal count
+Gerer tout les action et condition de realisation
+gerer mort des philo
