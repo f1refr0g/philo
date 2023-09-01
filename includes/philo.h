@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/01 12:25:07 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/01 12:55:20 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define EATING		2
 # define THINKING	3
 # define DEAD		4
-
 
 typedef struct s_philo	t_philo;
 //Data struct to store program parameters.

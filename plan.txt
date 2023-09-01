@@ -1,5 +1,8 @@
 A FAIRE :
 Gerer les timestamp DONE
+Add eating action
+Add thinking action
+Try to fix mutex (seems like philo can pick fork at same time (not sure why))
+Add death
+Manage time of each action and verify nothing overlap or irregular
 Gerer les meal count
-Gerer tout les action et condition de realisation
-gerer mort des philo
