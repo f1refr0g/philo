@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:11:32 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 15:39:00 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/01 12:17:01 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	data_init(t_d *data, char **av)
 		data->neat = ft_atoi(av[5]);
 	else
 		data->neat = 0;
+	data->start = get_time();
 }
 
 void	print_param(t_d *data)

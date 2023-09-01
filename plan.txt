@@ -1,5 +1,5 @@
 A FAIRE :
-Gerer les timestamp
+Gerer les timestamp DONE
 Gerer les meal count
 Gerer tout les action et condition de realisation
 gerer mort des philo

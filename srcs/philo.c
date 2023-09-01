@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/08/31 20:49:02 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/01 12:16:25 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*routine(void *input)
 		usleep((philo->data->tte / 2) * 1000);
 	while (loop)
 	{
-		// pthread_mutex_lock(&philo->data->lock);
+		pthread_mutex_lock(&philo->data->lock);
 		if (time < philo->data->nphilo)
 		{
 			pick_fork(philo);
@@ -35,7 +35,7 @@ void	*routine(void *input)
 		}
 		else
 			loop = 0;
-		// pthread_mutex_unlock(&philo->data->lock);
+		pthread_mutex_unlock(&philo->data->lock);
 	}
 	return (input);
 }
