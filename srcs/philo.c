@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/05 11:09:11 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:41:09 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	philo_init(t_d *data)
 	i = 0;
 	philo = malloc(sizeof (t_philo) * data->nphilo);
 	if (philo == NULL)
-		ft_error("Maloc error");
+		ft_error("Malloc error");
 	while (i < data->nphilo)
 	{
 		pthread_mutex_init(&philo[i].rfork, NULL);
@@ -57,6 +57,7 @@ void	philo_init(t_d *data)
 		philo[i].data = data;
 		philo[i].finished = 0;
 		philo[i].mcount = 0;
+		philo[i].lmeal = philo->data->start;
 		i++;
 	}
 	philo[0].lfork = philo[i].rfork;

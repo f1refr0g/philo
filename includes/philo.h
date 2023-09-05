@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/05 11:04:32 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:33:44 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_philo{
 	int					mcount;
 	int					status;
 	int					sleep;
-	int					lmeal;
+	uint64_t			lmeal;
 	int					ttd;
 	int					dead;
 	int					finished;
@@ -69,8 +69,9 @@ typedef struct s_philo{
 }	t_philo;
 
 /*Utils.c*/
-u_int64_t	get_time(void);
 
+//Return time of the day in MS
+u_int64_t	get_time(void);
 // Return lenght of string.
 int			ft_strlen(char *s);
 // End program and return error msg.
@@ -80,10 +81,16 @@ void		*ft_memset(void *b, int c, size_t len);
 //Set validated args inside struct.
 void		data_init(t_d *data, char **av);
 
-//Action
+/* action.c*/
+
+//Lock mutex associated to fork
 void		pick_fork(t_philo *philo);
+//Unlock mutex associated to fork
 void		drop_fork(t_philo *philo);
+//Output timestamp and action of philo
 void		announcer(int state, t_philo *philo);
+//Check if philo are alive
+int			check_dead(t_philo *philo);
 
 //Take a string and return it as int.
 int			ft_atoi(const char *str);
@@ -94,7 +101,10 @@ void		validate_args(char **av);
 int			is_finished(t_philo *philo);
 
 /*Delete at end*/
+
+//Print the parameter of the program
 void		print_param(t_d *data);
+//Clear data to end program
 void		clear_sim(t_d *data);
 
 #endif

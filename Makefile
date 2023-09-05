@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/08/31 12:48:23 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/09/05 11:10:45 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,10 @@ git:
 	@git push
 
 leaks:
-	@leaks --atExit -- ./philo 10 60 60 60
+	@leaks --atExit -- ./philo 10 60 60 60 10
 	
 valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./philo 10 60 60 60
+	valgrind --leak-check=full --show-leak-kinds=all ./philo 10 60 60 60 10
 
 run: all
 	./philo 10 60 60 60
