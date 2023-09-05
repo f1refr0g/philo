@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/01 12:55:20 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:04:32 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_philo{
 	int					lmeal;
 	int					ttd;
 	int					dead;
+	int					finished;
 	struct s_d			*data;
 	pthread_t			task;
 	pthread_mutex_t		lfork;
@@ -88,6 +89,9 @@ void		announcer(int state, t_philo *philo);
 int			ft_atoi(const char *str);
 // Check if arguments are valid format.
 void		validate_args(char **av);
+
+//Verify if philo has eaten total meal required (optional parameter)
+int			is_finished(t_philo *philo);
 
 /*Delete at end*/
 void		print_param(t_d *data);

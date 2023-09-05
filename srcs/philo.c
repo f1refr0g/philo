@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/01 12:16:25 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:09:11 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ void	*routine(void *input)
 	while (loop)
 	{
 		pthread_mutex_lock(&philo->data->lock);
-		if (time < philo->data->nphilo)
+		if (is_finished(philo) != 1)
 		{
 			pick_fork(philo);
 			usleep((philo->data->tte) * 1000);
+			philo->mcount++;
 			drop_fork(philo);
 			time++;
 		}
@@ -54,6 +55,8 @@ void	philo_init(t_d *data)
 		pthread_mutex_init(&philo[i].rfork, NULL);
 		philo[i].id = i + 1;
 		philo[i].data = data;
+		philo[i].finished = 0;
+		philo[i].mcount = 0;
 		i++;
 	}
 	philo[0].lfork = philo[i].rfork;

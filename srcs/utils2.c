@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/01 12:41:06 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:03:54 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ u_int64_t	get_time(void)
 	if (gettimeofday(&time, NULL))
 		return (0);
 	return (((time.tv_sec * (u_int64_t)1000) + (time.tv_usec / 1000)));
+}
+
+int		is_finished(t_philo *philo)
+{
+	if (philo->data->neat == 0)
+		return (0);
+	else if (philo->mcount == philo->data->neat)
+	{
+		philo->finished = 1;
+		return (1);
+	}
+	return (0);
 }
