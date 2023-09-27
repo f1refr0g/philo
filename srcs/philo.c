@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/05 11:41:09 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:36:15 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	philo_init(t_d *data)
 		philo[i].lmeal = philo->data->start;
 		i++;
 	}
-	philo[0].lfork = philo[i].rfork;
+	philo[0].lfork = &philo[i].rfork;
 	i = 1;
 	while (i < data->nphilo)
 	{
-		philo[i].lfork = philo[i - 1].rfork;
+		philo[i].lfork = &philo[i - 1].rfork;
 		i++;
 	}
 	data->philo = philo;

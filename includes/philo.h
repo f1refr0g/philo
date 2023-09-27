@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/05 11:33:44 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:33:29 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_philo{
 	int					finished;
 	struct s_d			*data;
 	pthread_t			task;
-	pthread_mutex_t		lfork;
+	pthread_mutex_t		*lfork;
 	pthread_mutex_t		rfork;
 }	t_philo;
 
