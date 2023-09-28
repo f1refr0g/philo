@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 11:33:51 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/27 19:25:05 by abeaudet         ###   ########.fr       */
+/*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
+/*   Updated: 2023/09/28 16:38:21 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	pick_fork(t_philo *philo)
+void	ft_dead(t_d *data)
 {
-	pthread_mutex_lock(&philo->rfork);
-	pthread_mutex_lock(philo->lfork);
-	announcer(FORK, philo);
-}
+	int i;
 
-void	drop_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(&philo->rfork);
-	pthread_mutex_unlock(philo->lfork);
-	announcer(SLEEPING, philo);
-}
-
-int		check_dead(t_philo *philo)
-{
-	if ((philo->lmeal + philo->data->ttd) > get_time())
+	i = 0;
+	while (i <= data->nphilo)
 	{
-		philo->dead = 1;
-		return (1);
+		if (get_time() - data->philo[i].lmeal >= data->ttd)
+		{
+			data->dead = 1;
+			break ;
+		}
+		else if (i == data->nphilo)
+			i = 0;
+		i++;
 	}
-	else
-		return (0);
 }

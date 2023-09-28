@@ -6,12 +6,13 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/27 18:36:15 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:32:01 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+//Need to add a condition to check if philo is dead if yes close everything 
 void	*routine(void *input)
 {
 	t_philo	*philo;
