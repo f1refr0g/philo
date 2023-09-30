@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 12:19:59 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:11:52 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,22 @@ void	clear_sim(t_d *data)
 void	announcer(int state, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->msg);
-	if (state == SLEEPING)
+	if (state == SLEEPING && philo->data->dead == 0)
+	{
 		printf("%lld ms %d is sleeping\n",
 			(get_time() - philo->data->start), philo->id);
-	else if (state == FORK)
+		usleep((philo->data->tts) * 1000);
+	}
+	else if (state == FORK && philo->data->dead == 0)
 		printf("%lld ms %d has taken a fork\n",
 			(get_time() - philo->data->start), philo->id);
-	else if (state == EATING)
+	else if (state == EATING && philo->data->dead == 0)
 	{
 		usleep((philo->data->tte) * 1000);
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->data->start), philo->id);
 	}
-	else if (state == THINKING)
+	else if (state == THINKING && philo->data->dead == 0)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
 	pthread_mutex_unlock(&philo->data->msg);
