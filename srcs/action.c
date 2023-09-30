@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:33:51 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/27 19:25:05 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:16:38 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	pick_fork(t_philo *philo)
 {
+	philo->lmeal = get_time();
 	pthread_mutex_lock(&philo->rfork);
 	pthread_mutex_lock(philo->lfork);
 	announcer(FORK, philo);
+	announcer(EATING, philo);
 }
 
 void	drop_fork(t_philo *philo)
