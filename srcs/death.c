@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 12:15:19 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:22:12 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	ft_dead(t_d *data)
 		else
 			return (1);
 	}
-	pthread_mutex_unlock(&data->msg);
+	// pthread_mutex_unlock(&data->msg);
 	return (0);
 }

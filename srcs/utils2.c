@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 12:01:40 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:19:59 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	announcer(int state, t_philo *philo)
 		printf("%lld ms %d has taken a fork\n",
 			(get_time() - philo->data->start), philo->id);
 	else if (state == EATING)
+	{
+		usleep((philo->data->tte) * 1000);
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->data->start), philo->id);
+	}
 	else if (state == THINKING)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
