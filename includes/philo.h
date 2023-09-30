@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/28 15:55:18 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/09/30 11:49:21 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ void		print_param(t_d *data);
 void		clear_sim(t_d *data);
 
 //death.c
-void		ft_dead(t_d *data);
+int		ft_dead(t_d *data);
 
 #endif
