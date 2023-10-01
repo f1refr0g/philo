@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/01 12:41:16 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/01 14:52:04 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int	main(int ac, char **av)
 	philo_init(&data);
 	pthread_mutex_init(&data.msg, NULL);
 	thread_init(&data);
-	ft_dead(&data);
-	pthread_mutex_unlock(&data.msg);
+	// ft_dead(&data);
+	// pthread_mutex_unlock(&data.msg);
 	i = 0;
 	while (i < data.nphilo)
 	{
