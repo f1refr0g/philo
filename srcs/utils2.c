@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 13:11:52 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/01 11:22:48 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ void	clear_sim(t_d *data)
 {
 	int	i;
 
+	i = 0;
+	//added this instead of pputting it in main
+	pthread_mutex_destroy(&data->msg);
+	while (i < data->nphilo)
+	{
+		pthread_join(data->task[i], NULL);
+		i++;
+	}
+	//end 
 	i = 0;
 	if (data->task != NULL)
 		free(data->task);
