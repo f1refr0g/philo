@@ -6,28 +6,27 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/01 14:52:04 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 11:05:05 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
 //Need to add a condition to check if philo is dead if yes close everything 
+//faire while (1) pour sauver des ligne et break out dla boucle X
 void	*routine(void *input)
 {
 	t_philo	*philo;
-	int		loop;
 	int		time;
 
-	loop = 1;
 	time = 0;
 	philo = (t_philo *) input;
 	if (philo->id % 2 == 0)
 		usleep((philo->data->tte / 2) * 1000);
-	while (loop)
+	while (1)
 	{
-		pthread_mutex_lock(&philo->data->lock);
-		if (is_finished(philo) != 1 && ft_dead(philo->data) == 1)
+		// pthread_mutex_lock(&philo->data->lock);
+		if (is_finished(philo) != 1)
 		{
 			pick_fork(philo);
 			philo->mcount++;
@@ -35,8 +34,8 @@ void	*routine(void *input)
 			time++;
 		}
 		else
-			loop = 0;
-		pthread_mutex_unlock(&philo->data->lock);
+			break ;
+		// pthread_mutex_unlock(&philo->data->lock);
 	}
 	return (input);
 }
@@ -96,7 +95,7 @@ int	main(int ac, char **av)
 	philo_init(&data);
 	pthread_mutex_init(&data.msg, NULL);
 	thread_init(&data);
-	// ft_dead(&data);
+	ft_dead(&data);
 	// pthread_mutex_unlock(&data.msg);
 	i = 0;
 	while (i < data.nphilo)

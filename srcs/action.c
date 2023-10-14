@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
+/*   By: karo <karo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:33:51 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 13:09:29 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:46:01 by karo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+//Changer lmeal pour quand je pick la 2eme fork, possible delai
+//annoncer pour les deux fourchette
+//unlock les fourcheo tte si le philo meurt
 void	pick_fork(t_philo *philo)
 {
-	philo->lmeal = get_time();
 	pthread_mutex_lock(&philo->rfork);
 	pthread_mutex_lock(philo->lfork);
+	philo->lmeal = get_time();
 	announcer(FORK, philo);
 	announcer(EATING, philo);
 }

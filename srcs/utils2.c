@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
+/*   By: karo <karo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/01 14:45:28 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:27:30 by karo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,19 @@ void	clear_sim(t_d *data)
 		free(data->philo);
 }
 
+// modifier announcer pour quil retourne 0 si okay, 1 si mort
+//Ne pas usleep dans announcer, car sa deadlock le programme
+// des quil wake je call thinking, les mutex font soccuper des timing
+//Modifier et utiliser la fonction usleep pimp dispo sur web
+//cverifier a lentrer du announcer si dead, sinon break out of routine
+//checker mes lock pour manger car les message cauyse un delai
+//ne pas lock mes message et mes sleep
+//donner les variable tte tts ttd a tout les philo pour eviter des lock, lock seulement
+// lorsque je regarde sur data
+//check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->msg);
+	// pthread_mutex_lock(&philo->data->msg);
 	if (state == SLEEPING && philo->data->dead == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
@@ -51,14 +61,14 @@ void	announcer(int state, t_philo *philo)
 			(get_time() - philo->data->start), philo->id);
 	else if (state == EATING && philo->data->dead == 0)
 	{
-		usleep((philo->data->tte) * 1000);
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->data->start), philo->id);
+		usleep((philo->data->tte) * 1000);
 	}
 	else if (state == THINKING && philo->data->dead == 0)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
-	pthread_mutex_unlock(&philo->data->msg);
+	// pthread_mutex_unlock(&philo->data->msg);
 }
 
 u_int64_t	get_time(void)

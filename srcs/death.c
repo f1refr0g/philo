@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
+/*   By: karo <karo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/01 12:42:35 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:46:21 by karo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
 //Infinite loop that will check if someone die
+//Voir truc modulo pour faire boucle infini (i + 1) % nphilo
 int	ft_dead(t_d *data)
 {
 	int i;
