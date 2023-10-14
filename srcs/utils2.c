@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 14:13:27 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:19:41 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	clear_sim(t_d *data)
 }
 
 // modifier announcer pour quil retourne 0 si okay, 1 si mort
-//Ne pas usleep dans announcer, car sa deadlock le programme
+//Ne pas usleep dans announcer, car sa deadlock le programme X
 // des quil wake je call thinking, les mutex font soccuper des timing
-//Modifier et utiliser la fonction usleep pimp dispo sur web
+//Modifier et utiliser la fonction usleep pimp dispo sur web X
 //cverifier a lentrer du announcer si dead, sinon break out of routine
-//checker mes lock pour manger car les message cauyse un delai
-//ne pas lock mes message et mes sleep
+//checker mes lock pour manger car les message cauyse un delai X
+//ne pas lock mes message et mes sleep X
 //donner les variable tte tts ttd a tout les philo pour eviter des lock, lock seulement
 // lorsque je regarde sur data
 //check dead lock check unlock pour eviter de deadlock le programme
