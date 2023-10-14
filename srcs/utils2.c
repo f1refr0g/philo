@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 11:43:41 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:31:18 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	clear_sim(t_d *data)
 void	announcer(int state, t_philo *philo)
 {
 	// pthread_mutex_lock(&philo->data->msg);
+	if (philo->data->dead == 1)
+		return ;
 	if (state == SLEEPING && philo->data->dead == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
