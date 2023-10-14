@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 12:07:46 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:38:33 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*routine(void *input)
 	while (1)
 	{
 		// pthread_mutex_lock(&philo->data->lock);
-		if (is_finished(philo) != 1)
+		if (is_finished(philo) != 1 && ft_dead(philo->data, philo) != 0)
 		{
 			pick_fork(philo);
 			announcer(EATING, philo);
@@ -35,7 +35,11 @@ void	*routine(void *input)
 			time++;
 		}
 		else
+		{
+			printf("dropdopr");
+			drop_fork(philo);
 			break ;
+		}
 		// pthread_mutex_unlock(&philo->data->lock);
 	}
 	return (input);
@@ -96,7 +100,7 @@ int	main(int ac, char **av)
 	philo_init(&data);
 	pthread_mutex_init(&data.msg, NULL);
 	thread_init(&data);
-	ft_dead(&data);
+	// ft_dead(&data);
 	// pthread_mutex_unlock(&data.msg);
 	i = 0;
 	while (i < data.nphilo)
