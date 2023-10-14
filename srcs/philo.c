@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 12:38:33 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:47:26 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*routine(void *input)
 	while (1)
 	{
 		// pthread_mutex_lock(&philo->data->lock);
-		if (is_finished(philo) != 1 && ft_dead(philo->data, philo) != 0)
+		if (is_finished(philo) != 1 && ft_dead(philo->data) != 0)
 		{
 			pick_fork(philo);
 			announcer(EATING, philo);
