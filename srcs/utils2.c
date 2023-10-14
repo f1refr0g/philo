@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karo <karo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/12 21:27:30 by karo             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:43:41 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	announcer(int state, t_philo *philo)
 	{
 		printf("%lld ms %d is sleeping\n",
 			(get_time() - philo->data->start), philo->id);
-		usleep((philo->data->tts) * 1000);
+		ft_usleep((philo->data->tts));
 	}
 	else if (state == FORK && philo->data->dead == 0)
 		printf("%lld ms %d has taken a fork\n",
@@ -63,7 +63,7 @@ void	announcer(int state, t_philo *philo)
 	{
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->data->start), philo->id);
-		usleep((philo->data->tte) * 1000);
+		ft_usleep((philo->data->tte));
 	}
 	else if (state == THINKING && philo->data->dead == 0)
 		printf("%lld ms %d is thinking\n",
@@ -89,5 +89,15 @@ int	is_finished(t_philo *philo)
 		philo->finished = 1;
 		return (1);
 	}
+	return (0);
+}
+
+int		ft_usleep(useconds_t time)
+{
+	u_int64_t	start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(time / 10);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/09/30 11:49:21 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 11:22:50 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,10 @@ int			is_finished(t_philo *philo);
 void		print_param(t_d *data);
 //Clear data to end program
 void		clear_sim(t_d *data);
+//More precise usleep function
+int			ft_usleep(useconds_t time);
 
 //death.c
-int		ft_dead(t_d *data);
+int			ft_dead(t_d *data);
 
 #endif
