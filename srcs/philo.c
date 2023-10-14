@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 11:50:08 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:07:46 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*routine(void *input)
 		if (is_finished(philo) != 1)
 		{
 			pick_fork(philo);
+			announcer(EATING, philo);
 			philo->mcount++;
 			drop_fork(philo);
 			time++;
@@ -59,7 +60,7 @@ void	philo_init(t_d *data)
 		philo[i].lmeal = philo->data->start;
 		i++;
 	}
-	philo[0].lfork = &philo[i].rfork;
+	philo[0].lfork = &philo[i - 1].rfork;
 	i = 1;
 	while (i < data->nphilo)
 	{
