@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 14:19:29 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:02:33 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ void	*routine(void *input)
 		// pthread_mutex_lock(&philo->data->lock);
 		if (is_finished(philo) != 1 && ft_dead(philo->data))
 		{
+			if (ft_checkdead(philo) == 1)
+				break ;
 			pick_fork(philo);
 			announcer(EATING, philo);
 			philo->mcount++;
 			drop_fork(philo);
-			announcer(THINKING, philo);
+			// announcer(THINKING, philo);
 			time++;
 		}
 		else
