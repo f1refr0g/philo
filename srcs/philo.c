@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:02:33 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:05:12 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*routine(void *input)
 			announcer(EATING, philo);
 			philo->mcount++;
 			drop_fork(philo);
-			// announcer(THINKING, philo);
+			announcer(THINKING, philo);
 			time++;
 		}
 		else
