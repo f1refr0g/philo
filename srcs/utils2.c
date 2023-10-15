@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/14 16:30:47 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:20:11 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ void	clear_sim(t_d *data)
 	int	i;
 
 	i = 0;
-	//added this instead of pputting it in main
 	pthread_mutex_destroy(&data->msg);
 	while (i < data->nphilo)
 	{
 		pthread_join(data->task[i], NULL);
 		i++;
 	}
-	//end 
 	i = 0;
 	if (data->task != NULL)
 		free(data->task);
@@ -44,17 +42,13 @@ void	clear_sim(t_d *data)
 //cverifier a lentrer du announcer si dead, sinon break out of routine
 //checker mes lock pour manger car les message cauyse un delai X
 //ne pas lock mes message et mes sleep X
-//donner les variable tte tts ttd a tout les philo pour eviter des lock, lock seulement
+//donner les variable tte tts ttd a tout les philo pour eviter des lock
 // lorsque je regarde sur data
 //check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	// pthread_mutex_lock(&philo->data->msg);
 	if (philo->data->dead == 1)
-		{
-			// pthread_mutex_unlock(&philo->data->msg);
-			return ;
-		}
+		return ;
 	if (state == SLEEPING && philo->data->dead == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
@@ -73,7 +67,6 @@ void	announcer(int state, t_philo *philo)
 	else if (state == THINKING && philo->data->dead == 0)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
-	// pthread_mutex_unlock(&philo->data->msg);
 }
 
 u_int64_t	get_time(void)
@@ -97,7 +90,7 @@ int	is_finished(t_philo *philo)
 	return (0);
 }
 
-int		ft_usleep(useconds_t time)
+int	ft_usleep(useconds_t time)
 {
 	u_int64_t	start;
 
