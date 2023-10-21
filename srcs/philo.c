@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:21:34 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:04:29 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	philo_init(t_d *data)
 		philo[i].lmeal = philo->data->start;
 		i++;
 	}
+	// if (data->nphilo > 1)
 	philo[0].lfork = &philo[i - 1].rfork;
 	i = 1;
 	while (i < data->nphilo)

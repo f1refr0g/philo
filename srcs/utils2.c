@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:20:11 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:36:31 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,24 @@ void	clear_sim(t_d *data)
 //check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	if (philo->data->dead == 1)
-		return ;
-	if (state == SLEEPING && philo->data->dead == 0)
+	// if (ft_checkdead(philo) == 1)
+	// 	return ;
+	if (state == SLEEPING && ft_checkdead(philo) == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
 			(get_time() - philo->data->start), philo->id);
 		ft_usleep((philo->data->tts));
 	}
-	else if (state == FORK && philo->data->dead == 0)
+	else if (state == FORK && ft_checkdead(philo) == 0)
 		printf("%lld ms %d has taken a fork\n",
 			(get_time() - philo->data->start), philo->id);
-	else if (state == EATING && philo->data->dead == 0)
+	else if (state == EATING && ft_checkdead(philo) == 0)
 	{
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->data->start), philo->id);
 		ft_usleep((philo->data->tte));
 	}
-	else if (state == THINKING && philo->data->dead == 0)
+	else if (state == THINKING && ft_checkdead(philo) == 0)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
 }
