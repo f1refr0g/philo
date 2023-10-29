@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/25 15:01:17 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:09:26 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	clear_sim(t_d *data)
 //check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	// if (ft_checkdead(philo) == 1)
-	// 	return ;
 	// pthread_mutex_lock(&philo->data->msg);
 	if (state == SLEEPING && ft_checkdead(philo) == 0)
 	{
@@ -101,3 +99,4 @@ int	ft_usleep(useconds_t time)
 		usleep(time / 10);
 	return (0);
 }
+

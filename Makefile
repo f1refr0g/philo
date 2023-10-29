@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/09/28 15:55:25 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/10/29 18:11:34 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS_FILES = philo.c\
 			parsing.c\
 			utils.c\
 			utils2.c\
+			utils3.c\
 			action.c\
 			death.c\
 

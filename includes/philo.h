@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:01:07 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:17:27 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ typedef struct s_philo{
 	int					sleep;
 	uint64_t			lmeal;
 	int					ttd;
+	int					tts;
+	int					tte;
+	int					neat;
 	int					dead;
 	int					finished;
 	struct s_d			*data;
@@ -113,5 +116,8 @@ int			ft_usleep(useconds_t time);
 int			ft_dead(t_d *data);
 void		ft_close(t_d *data);
 int			ft_checkdead(t_philo *philo);
+
+//utils3.c
+void	set_philo(t_philo *philo ,t_d *data, int i);
 
 #endif

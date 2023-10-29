@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/25 15:18:01 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:16:26 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 void	*routine(void *input)
 {
 	t_philo	*philo;
-	// int		time;
 
-	// time = 0;
 	philo = (t_philo *) input;
 	if (philo->id % 2 == 0)
 		ft_usleep((philo->data->tte) / 2);
@@ -35,7 +33,6 @@ void	*routine(void *input)
 			philo->mcount++;
 			if (philo->mcount != philo->data->neat || ft_checkdead(philo) != 1)
 				announcer(THINKING, philo);
-			// time++;
 		}
 		else
 			break ;
@@ -55,11 +52,12 @@ void	philo_init(t_d *data)
 	while (i < data->nphilo)
 	{
 		pthread_mutex_init(&philo[i].rfork, NULL);
-		philo[i].id = i + 1;
-		philo[i].data = data;
-		philo[i].finished = 0;
-		philo[i].mcount = 0;
-		philo[i].lmeal = philo->data->start;
+		set_philo(&philo[i], data, i);
+		// philo[i].id = i + 1;
+		// philo[i].data = data;
+		// philo[i].finished = 0;
+		// philo[i].mcount = 0;
+		// philo[i].lmeal = philo->data->start;
 		i++;
 	}
 	// if (data->nphilo > 1)

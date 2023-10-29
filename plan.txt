@@ -1,20 +1,7 @@
-A FAIRE :
-Gerer les timestamp DONE
-Gerer les meal count DONE
+Plan pour lundi 30 octobre
 
-Add eating action
-Add thinking action
-Try to fix mutex (seems like philo can pick fork at same time (not sure why))
-Add death
-Manage time of each action and verify nothing overlap or irregular
-
-
-
-
-Boucle qui tourne a linfini pour verifier chaque philo si ils sont en vie 
-gerer a ce quela simulation finisse bien si un philo meurt
-gerer avec time since last eaten et timestamp de laction eat
-ajouter laction de penser pour voir si il peux manger
-Modifier mon action de sleep pour la rendre plus precise et verifier plus souvent si il peux manger
-Gerer leak si il y en as
-si philo = mort, break loop, join thread, end sim
+-Changer la struct de philo pour ajouter les parametres dedans
+-Fix le solo philosopher Case
+-Refaire les test du corriger
+-Debug au besoin
+-Essayer de simplifier code
