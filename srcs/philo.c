@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/16 13:04:29 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:18:01 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 void	*routine(void *input)
 {
 	t_philo	*philo;
-	int		time;
+	// int		time;
 
-	time = 0;
+	// time = 0;
 	philo = (t_philo *) input;
 	if (philo->id % 2 == 0)
 		ft_usleep((philo->data->tte) / 2);
@@ -31,10 +31,11 @@ void	*routine(void *input)
 				break ;
 			pick_fork(philo);
 			announcer(EATING, philo);
-			philo->mcount++;
 			drop_fork(philo);
-			announcer(THINKING, philo);
-			time++;
+			philo->mcount++;
+			if (philo->mcount != philo->data->neat || ft_checkdead(philo) != 1)
+				announcer(THINKING, philo);
+			// time++;
 		}
 		else
 			break ;

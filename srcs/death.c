@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:20:24 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:01:09 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int	ft_dead(t_d *data)
 		if ((int)(get_time() - data->philo[i].lmeal)
 			> data->ttd && data->dead == 0)
 		{
+			// pthread_mutex_lock(&data->msg);
 			data->dead = 1;
 			printf("%lld ms %d died\n",
 				(get_time() - data->start), data->philo[i].id);
+			// pthread_mutex_unlock(&data->msg);
 			break ;
 		}
 		else if (i == data->nphilo && data->philo->dead == 0)

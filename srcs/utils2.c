@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/15 13:36:31 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:01:17 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	announcer(int state, t_philo *philo)
 {
 	// if (ft_checkdead(philo) == 1)
 	// 	return ;
+	// pthread_mutex_lock(&philo->data->msg);
 	if (state == SLEEPING && ft_checkdead(philo) == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
@@ -67,6 +68,7 @@ void	announcer(int state, t_philo *philo)
 	else if (state == THINKING && ft_checkdead(philo) == 0)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
+	// pthread_mutex_unlock(&philo->data->msg);
 }
 
 u_int64_t	get_time(void)
