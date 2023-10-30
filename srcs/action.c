@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:33:51 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/25 14:41:35 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:55:57 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 //unlock les fourcheo tte si le philo meurt
 void	pick_fork(t_philo *philo)
 {
+	if (philo->nphilo > 1)
+	{
 	pthread_mutex_lock(&philo->rfork);
 	announcer(FORK, philo);
 	// if (philo->lfork != NULL)
 		pthread_mutex_lock(philo->lfork);
 	philo->lmeal = get_time();
 	announcer(FORK, philo);
+	}
 }
 
 void	drop_fork(t_philo *philo)
