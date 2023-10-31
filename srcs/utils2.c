@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/30 10:57:44 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/10/31 07:56:53 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	announcer(int state, t_philo *philo)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->data->start), philo->id);
 	}
-	// pthread_mutex_unlock(&philo->data->msg);
+	// pthread_mutex_unloasdasdck(&philo->data->msg);
 }
 
 u_int64_t	get_time(void)
