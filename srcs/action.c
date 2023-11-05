@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:33:51 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/30 10:55:57 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:52:37 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	drop_fork(t_philo *philo)
 
 int	check_dead(t_philo *philo)
 {
-	if ((philo->lmeal + philo->data->ttd) > get_time())
+	if ((philo->lmeal + philo->ttd) > get_time())
 	{
 		philo->dead = 1;
 		return (1);

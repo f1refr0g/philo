@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/05 12:50:01 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:51:15 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ u_int64_t	get_time(void)
 
 int	is_finished(t_philo *philo)
 {
-	if (philo->data->neat == 0)
+	if (philo->neat == 0)
 		return (0);
-	else if (philo->mcount == philo->data->neat)
+	else if (philo->mcount == philo->neat)
 	{
 		philo->finished = 1;
 		return (1);
