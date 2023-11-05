@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/31 07:57:07 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:50:01 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ void	announcer(int state, t_philo *philo)
 	if (state == SLEEPING && ft_checkdead(philo) == 0)
 	{
 		printf("%lld ms %d is sleeping\n",
-			(get_time() - philo->data->start), philo->id);
-		ft_usleep((philo->data->tts));
+			(get_time() - philo->start), philo->id);
+		ft_usleep((philo->tts));
 	}
 	else if (state == FORK && ft_checkdead(philo) == 0)
 		printf("%lld ms %d has taken a fork\n",
-			(get_time() - philo->data->start), philo->id);
+			(get_time() - philo->start), philo->id);
 	else if (state == EATING && ft_checkdead(philo) == 0)
 	{
 		printf("%lld ms %d is eating\n",
-			(get_time() - philo->data->start), philo->id);
+			(get_time() - philo->start), philo->id);
 		ft_usleep((philo->data->tte));
 	}
 	else if (state == THINKING && ft_checkdead(philo) == 0)
 		printf("%lld ms %d is thinking\n",
-			(get_time() - philo->data->start), philo->id);
+			(get_time() - philo->start), philo->id);
 	}
 	// pthread_mutex_unlock(&philo->data->msg);
 }

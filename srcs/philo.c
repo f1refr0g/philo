@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/10/30 11:32:05 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:43:46 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*routine(void *input)
 
 	philo = (t_philo *) input;
 	if (philo->id % 2 == 0)
-		ft_usleep((philo->data->tte) / 2);
+		ft_usleep((philo->tte) / 2);
 	while (1)
 	{
 		if (is_finished(philo) != 1 && ft_dead(philo->data))
