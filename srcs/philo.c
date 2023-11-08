@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/05 13:26:13 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:30:25 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*routine(void *input)
 		ft_usleep((philo->tte) / 2);
 	while (1)
 	{
-		if (is_finished(philo) != 1 && ft_dead(philo))
+		if (is_finished(philo) != 1)
 		{
 			if (ft_checkdead(philo) == 1)
 				break ;
@@ -97,6 +97,7 @@ int	main(int ac, char **av)
 	philo_init(&data);
 	pthread_mutex_init(&data.msg, NULL);
 	thread_init(&data);
+	ft_death(&data);
 	i = 0;
 	while (i < data.nphilo)
 	{

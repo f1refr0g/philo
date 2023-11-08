@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/05 13:29:08 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:29:27 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int			ft_dead(t_philo *philo);
 // int			ft_dead(t_d *data);
 void		ft_close(t_d *data);
 int			ft_checkdead(t_philo *philo);
-
+void		ft_death(t_d *data);
 //utils3.c
 void		set_philo(t_philo *philo, t_d *data, int i);
 
