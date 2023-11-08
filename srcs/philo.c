@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/08 12:42:04 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:54:20 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	thread_init(t_d *data)
 		pthread_create(&data->task[i], NULL, &routine, &data->philo[i]);
 		i++;
 	}
+	ft_usleep(100);
 }
 
 int	main(int ac, char **av)
