@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/08 13:45:07 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:02:45 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,41 +39,41 @@
 // 	return (0);
 // }
 
-int	ft_dead(t_philo *philo)
-{
-	int	i;
+// int	ft_dead(t_philo *philo)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < philo->nphilo)
-	{
-		if ((int)(get_time() - philo->lmeal)
-			> philo->ttd && philo->data->dead == 0)
-		{
-			// pthread_mutex_lock(&data->msg);
-			philo->data->dead = 1;
-			printf("%lld ms %d died\n",
-				(get_time() - philo->start), philo->id);
-			// pthread_mutex_unlock(&data->msg);
-			break ;
-		}
-		else if (i == philo->nphilo && philo->data->dead == 0)
-			i = 0;
-		else
-			return (1);
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (i < philo->nphilo)
+// 	{
+// 		if ((int)(get_time() - philo->lmeal)
+// 			> philo->ttd && philo->data->dead == 0)
+// 		{
+// 			// pthread_mutex_lock(&data->msg);
+// 			philo->data->dead = 1;
+// 			printf("%lld ms %d died\n",
+// 				(get_time() - philo->start), philo->id);
+// 			// pthread_mutex_unlock(&data->msg);
+// 			break ;
+// 		}
+// 		else if (i == philo->nphilo && philo->data->dead == 0)
+// 			i = 0;
+// 		else
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
 int	ft_checkdead(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->lock);
+	// pthread_mutex_lock(&philo->data->lock);
 	if (philo->data->dead == 1)
 	{
+		// pthread_mutex_unlock(&philo->data->lock);
 		drop_fork(philo);
-		pthread_mutex_unlock(&philo->data->lock);
 		return (1);
 	}
-	pthread_mutex_unlock(&philo->data->lock);
+	// pthread_mutex_unlock(&philo->data->lock);
 	return (0);
 }
 
@@ -99,5 +99,6 @@ void	ft_death(t_d *data)
 			i = 0;
 			ft_usleep(5);
 		}
+		// i++;
 	}
 }
