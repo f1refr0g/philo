@@ -6,7 +6,7 @@
 #    By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 17:45:13 by abeaudet          #+#    #+#              #
-#    Updated: 2023/11/05 10:52:16 by abeaudet         ###   ########.fr        #
+#    Updated: 2023/11/16 12:20:11 by abeaudet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ leaks:
 	@leaks --atExit -- ./philo 200 60 60 60 4
 	
 valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./philo 5 800 200 200 10
+	valgrind --leak-check=full --show-leak-kinds=all ./philo 5 800 200 200 5
 
 run: all
 	./philo 10 60 60 60
