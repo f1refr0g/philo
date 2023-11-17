@@ -1,23 +1,92 @@
-Param
+==================
+WARNING: ThreadSanitizer: data race (pid=67720)
+  Write of size 4 at 0x7ffee31e45e4 by main thread (mutexes: write M56):
+    #0 ft_death death.c:93 (philo:x86_64+0x100003b8b)
+    #1 main philo.c:104 (philo:x86_64+0x100001efa)
 
-number_of_philosopher cant be 0
-time_to_die in ms (int size)
-time_to_eat in ms (int size)
-time_to_sleep in ms (int size)
-**number_of_time_each_philosopher_must_eat (int qui determine le nombre de fois qun philo dois manger)
+  Previous read of size 4 at 0x7ffee31e45e4 by thread T1:
+    #0 ft_checkdead death.c:70 (philo:x86_64+0x1000039d7)
+    #1 routine philo.c:34 (philo:x86_64+0x100001999)
 
-Chaque philo nombre between 1 and number_of_philosopher
-philo assis entre n - 1 et n + 1
+  Location is stack of main thread.
 
-https://github.com/TommyJD93/Philosophers
-https://www.youtube.com/watch?v=GNw3RXr-VJk
-https://www.embeddedhow.com/post/debugging-data-race-conditions-using-thread-sanitizer
-Aug 29 at 15:28
-https://www.geeksforgeeks.org/mutex-lock-for-linux-thread-synchronization/
-https://www.geeksforgeeks.org/multithreading-in-c/
-https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-detach-detach-thread
-https://www.ibm.com/docs/en/i/7.3?topic=ssw_ibm_i_73/apis/users_61.html
-https://stackoverflow.com/questions/21248840/example-of-waitpid-in-use
-https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-create-create-thread
-https://linuxhint.com/gettimeofday_c_language/
-https://www.mathworks.com/products/polyspace/static-analysis-notes/what-data-races-how-avoid-during-software-development.html#:~:text=Data%20races%20are%20a%20common,to%20undefined%20or%20unpredictable%20behavior.
+  Mutex M56 (0x7ffee31e4648) created at:
+    #0 pthread_mutex_init <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2e913)
+    #1 main philo.c:101 (philo:x86_64+0x100001ebc)
+
+  Thread T1 (tid=294127, running) created by main thread at:
+    #0 pthread_create <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2d8fd)
+    #1 thread_init philo.c:84 (philo:x86_64+0x100001db5)
+    #2 main philo.c:103 (philo:x86_64+0x100001eee)
+
+SUMMARY: ThreadSanitizer: data race death.c:93 in ft_death
+
+
+WARNING: ThreadSanitizer: data race (pid=67720)
+  Write of size 8 at 0x7b88000001d8 by thread T4 (mutexes: write M19, write M18):
+    #0 pick_fork action.c:25 (philo:x86_64+0x1000037e7)
+    #1 routine philo.c:28 (philo:x86_64+0x100001935)
+
+  Previous read of size 8 at 0x7b88000001d8 by main thread:
+    [failed to restore the stack]
+
+  Location is heap block of size 6080 at 0x7b8800000000 allocated by main thread:
+    #0 malloc <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x5239a)
+    #1 philo_init philo.c:51 (philo:x86_64+0x100001adf)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Mutex M19 (0x7b8800000220) created at:
+    #0 pthread_mutex_init <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2e913)
+    #1 philo_init philo.c:56 (philo:x86_64+0x100001b4c)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Mutex M18 (0x7b8800000188) created at:
+    #0 pthread_mutex_init <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2e913)
+    #1 philo_init philo.c:56 (philo:x86_64+0x100001b4c)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Thread T4 (tid=294130, running) created by main thread at:
+    #0 pthread_create <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2d8fd)
+    #1 thread_init philo.c:84 (philo:x86_64+0x100001db5)
+    #2 main philo.c:103 (philo:x86_64+0x100001eee)
+
+SUMMARY: ThreadSanitizer: data race action.c:25 in pick_fork
+
+
+==================
+WARNING: ThreadSanitizer: data race (pid=67720)
+  Read of size 8 at 0x7b8800000010 by main thread:
+    #0 ft_death death.c:89 (philo:x86_64+0x100003af5)
+    #1 main philo.c:104 (philo:x86_64+0x100001efa)
+
+  Previous write of size 8 at 0x7b8800000010 by thread T1 (mutexes: write M16, write M55):
+    #0 pick_fork action.c:25 (philo:x86_64+0x1000037e7)
+    #1 routine philo.c:28 (philo:x86_64+0x100001935)
+
+  As if synchronized via sleep:
+    #0 usleep <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2c5ae)
+    #1 ft_usleep utils2.c:103 (philo:x86_64+0x1000032af)
+    #2 thread_init philo.c:87 (philo:x86_64+0x100001dd0)
+    #3 main philo.c:103 (philo:x86_64+0x100001eee)
+
+  Location is heap block of size 6080 at 0x7b8800000000 allocated by main thread:
+    #0 malloc <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x5239a)
+    #1 philo_init philo.c:51 (philo:x86_64+0x100001adf)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Mutex M16 (0x7b8800000058) created at:
+    #0 pthread_mutex_init <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2e913)
+    #1 philo_init philo.c:56 (philo:x86_64+0x100001b4c)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Mutex M55 (0x7b8800001780) created at:
+    #0 pthread_mutex_init <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2e913)
+    #1 philo_init philo.c:56 (philo:x86_64+0x100001b4c)
+    #2 main philo.c:100 (philo:x86_64+0x100001ea3)
+
+  Thread T1 (tid=294127, running) created by main thread at:
+    #0 pthread_create <null>:3 (libclang_rt.tsan_osx_dynamic.dylib:x86_64h+0x2d8fd)
+    #1 thread_init philo.c:84 (philo:x86_64+0x100001db5)
+    #2 main philo.c:103 (philo:x86_64+0x100001eee)
+
+SUMMARY: ThreadSanitizer: data race death.c:89 in ft_death
