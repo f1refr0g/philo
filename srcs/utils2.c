@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 01:18:26 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 05:00:25 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ void	clear_sim(t_d *data)
 //check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	printf("Lock anouncer\n");
+	// printf("Lock anouncer\n");
 	pthread_mutex_lock(&philo->data->lock);
-	printf("mutex lock unlock announcer\n");
+	// printf("mutex lock unlock announcer\n");
 	if (philo->data->dead == 1)
 	{
 		pthread_mutex_unlock(&philo->data->lock);
-		printf("avant return si mort\n");
+		// printf("avant return si mort\n");
 		return ;
 	}
 	pthread_mutex_unlock(&philo->data->lock);
-	printf("unlock hor dead\n");
+	// printf("unlock hor dead\n");
 	if (philo->nphilo > 1)
 	{
 	if (state == SLEEPING)

@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 04:36:44 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 04:59:58 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	ft_checkdead(t_philo *philo)
 {
-		printf("Je regarde dead 1\n");
+		// printf("Je regarde dead 1\n");
 	pthread_mutex_lock(&philo->data->lock);
-	printf("je garde apres mort\n");
+	// printf("je garde apres mort\n");
 	
 	if (philo->data->dead == 1)
 	{
-		printf("Je suis avant drop fork\n");
+		// printf("Je suis avant drop fork\n");
 		// drop_fork(philo);
 		pthread_mutex_unlock(&philo->data->lock);
-	printf("Je suis la fin de checkdead \n");
+	// printf("Je suis la fin de checkdead \n");
 		return (1);
 	}
-	printf("unlock dead != 1 \n");
+	// printf("unlock dead != 1 \n");
 	pthread_mutex_unlock(&philo->data->lock);
 	return (0);
 }
