@@ -6,13 +6,13 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:39 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/17 08:49:49 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 05:16:52 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	set_philo(t_philo *philo ,t_d *data, int i)
+void	set_philo(t_philo *philo, t_d *data, int i)
 {
 	philo->id = i + 1;
 	philo->data = data;

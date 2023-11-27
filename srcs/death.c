@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 04:59:58 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 05:20:11 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ void	ft_death(t_d *data)
 		}
 		i = (i + 1) % data->nphilo;
 		pthread_mutex_unlock(&data->lock);
-		
-
 	}
-			// printf("je unlock a ma mort\n");
-			pthread_mutex_unlock(&data->lock);
-	
+	// printf("je unlock a ma mort\n");
+	pthread_mutex_unlock(&data->lock);
 }

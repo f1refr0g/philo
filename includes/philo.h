@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/08 12:29:27 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 05:07:01 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_d{
 	int					tts;
 	int					neat;
 	int					dead;
+	int					finished;
+	int					pfini;
 	u_int64_t			start;
 	t_philo				*philo;
 	pthread_t			*task;
