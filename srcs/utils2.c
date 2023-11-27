@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/17 10:24:23 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:18:26 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	clear_sim(t_d *data)
 	int	i;
 
 	i = 0;
-	pthread_mutex_destroy(&data->msg);
-	pthread_mutex_destroy(&data->lock);
+	// pthread_mutex_destroy(&data->msg);
+	// pthread_mutex_destroy(&data->lock);
 	// while (i < data->nphilo)
 	// {
 	// 	pthread_join(data->task[i], NULL);
@@ -48,25 +48,35 @@ void	clear_sim(t_d *data)
 //check dead lock check unlock pour eviter de deadlock le programme
 void	announcer(int state, t_philo *philo)
 {
-	// pthread_mutex_lock(&philo->data->msg);
+	printf("Lock anouncer\n");
+	pthread_mutex_lock(&philo->data->lock);
+	printf("mutex lock unlock announcer\n");
+	if (philo->data->dead == 1)
+	{
+		pthread_mutex_unlock(&philo->data->lock);
+		printf("avant return si mort\n");
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->lock);
+	printf("unlock hor dead\n");
 	if (philo->nphilo > 1)
 	{
-	if (state == SLEEPING && ft_checkdead(philo) == 0)
+	if (state == SLEEPING)
 	{
 		printf("%lld ms %d is sleeping\n",
 			(get_time() - philo->start), philo->id);
 		ft_usleep((philo->tts));
 	}
-	else if (state == FORK && ft_checkdead(philo) == 0)
+	else if (state == FORK)
 		printf("%lld ms %d has taken a fork\n",
 			(get_time() - philo->start), philo->id);
-	else if (state == EATING && ft_checkdead(philo) == 0)
+	else if (state == EATING)
 	{
 		printf("%lld ms %d is eating\n",
 			(get_time() - philo->start), philo->id);
 		ft_usleep((philo->data->tte));
 	}
-	else if (state == THINKING && ft_checkdead(philo) == 0)
+	else if (state == THINKING)
 		printf("%lld ms %d is thinking\n",
 			(get_time() - philo->start), philo->id);
 	}
@@ -84,13 +94,19 @@ u_int64_t	get_time(void)
 
 int	is_finished(t_philo *philo)
 {
+	// pthread_mutex_lock(&philo->data->lock);
 	if (philo->neat == 0)
+	{
+		// pthread_mutex_unlock(&philo->data->lock);
 		return (0);
+	}
 	else if (philo->mcount == philo->neat)
 	{
 		philo->finished = 1;
+		// pthread_mutex_unlock(&philo->data->lock);
 		return (1);
 	}
+	// pthread_mutex_unlock(&philo->data->lock);
 	return (0);
 }
 

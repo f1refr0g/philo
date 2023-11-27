@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/17 10:21:21 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:24:42 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	*routine(void *input)
 				break ;
 			if (philo->mcount != philo->neat || ft_checkdead(philo) != 1)
 				announcer(THINKING, philo);
+			// printf("tortue\n");
 		}
 		else
 			break ;
 	}
+	// printf("philo a terminer\n");
 	return (input);
 }
 
@@ -103,11 +105,11 @@ int	main(int ac, char **av)
 	thread_init(&data);
 	ft_death(&data);
 	i = 0;
-	// while (i < data.nphilo)
-	// {
-	// 	pthread_join(data.task[i], NULL);
-	// 	i++;
-	// }
+	while (i < data.nphilo)
+	{
+		pthread_join(data.task[i], NULL);
+		i++;
+	}
 	// pthread_mutex_destroy(&data.msg);
 	clear_sim(&data);
 	return (0);
