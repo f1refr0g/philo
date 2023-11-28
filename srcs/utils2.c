@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 05:21:00 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/28 03:48:59 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,15 @@ void	clear_sim(t_d *data)
 		free(data->philo);
 }
 
-// modifier announcer pour quil retourne 0 si okay, 1 si mort
-//Ne pas usleep dans announcer, car sa deadlock le programme X
-// des quil wake je call thinking, les mutex font soccuper des timing
-//Modifier et utiliser la fonction usleep pimp dispo sur web X
-//cverifier a lentrer du announcer si dead, sinon break out of routine
-//checker mes lock pour manger car les message cauyse un delai X
-//ne pas lock mes message et mes sleep X
-//donner les variable tte tts ttd a tout les philo pour eviter des lock
-// lorsque je regarde sur data
-//check dead lock check unlock pour eviter de deadlock le programme
-void	announcer(int state, t_philo *philo)
+int	announcer(int state, t_philo *philo)
 {
-	// printf("Lock anouncer\n");
 	pthread_mutex_lock(&philo->data->lock);
-	// printf("mutex lock unlock announcer\n");
 	if (philo->data->dead == 1)
 	{
 		pthread_mutex_unlock(&philo->data->lock);
-		// printf("avant return si mort\n");
-		return ;
+		return (1);
 	}
 	pthread_mutex_unlock(&philo->data->lock);
-	// printf("unlock hor dead\n");
 	if (philo->nphilo > 1)
 	{
 		if (state == SLEEPING)
@@ -80,7 +66,7 @@ void	announcer(int state, t_philo *philo)
 			printf("%lld ms %d is thinking\n",
 				(get_time() - philo->start), philo->id);
 	}
-	// pthread_mutex_unlock(&philo->data->msg);
+	return (0);
 }
 
 u_int64_t	get_time(void)
@@ -94,19 +80,15 @@ u_int64_t	get_time(void)
 
 int	is_finished(t_philo *philo)
 {
-	// pthread_mutex_lock(&philo->data->lock);
 	if (philo->neat == 0)
 	{
-		// pthread_mutex_unlock(&philo->data->lock);
 		return (0);
 	}
 	else if (philo->mcount == philo->neat)
 	{
 		philo->finished = 1;
-		// pthread_mutex_unlock(&philo->data->lock);
 		return (1);
 	}
-	// pthread_mutex_unlock(&philo->data->lock);
 	return (0);
 }
 
@@ -119,4 +101,3 @@ int	ft_usleep(useconds_t time)
 		usleep(time / 10);
 	return (0);
 }
-

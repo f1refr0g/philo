@@ -1,7 +1,39 @@
-Plan pour lundi 30 octobre
+PLAN du lundi 27 novembre
 
--Changer la struct de philo pour ajouter les parametres dedans
--Fix le solo philosopher Case
--Refaire les test du corriger
--Debug au besoin
--Essayer de simplifier code
+-Norminetter le code
+-Remove commentaire inutile
+-remove fonction non utiliser
+-remove le plus de lock unlock possible sans nuir au philo
+-refaire test
+-ecrire ce qui reste a faire pour le lendemain
+-grade me a linfini
+
+
+
+void	*routine(void *input)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *) input;
+	if (philo->id % 2 == 0)
+		ft_usleep((philo->tte) / 2);
+	while (1)
+	{
+		if (is_finished(philo) != 1)
+		{
+			pick_fork(philo);
+			if (ft_checkdead(philo) == 1)
+				break ;
+			announcer(EATING, philo);
+			drop_fork(philo);
+			philo->mcount++;
+			if (ft_checkdead(philo) == 1 || philo->mcount == philo->neat)
+				break ;
+			if (philo->mcount != philo->neat || ft_checkdead(philo) != 1)
+				announcer(THINKING, philo);
+		}
+		else
+			break ;
+	}
+	return (input);
+}

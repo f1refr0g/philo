@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 07:50:07 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 05:07:01 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/28 03:48:32 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ void		data_init(t_d *data, char **av);
 /* action.c*/
 
 //Lock mutex associated to fork
-void		pick_fork(t_philo *philo);
+int		pick_fork(t_philo *philo);
 //Unlock mutex associated to fork
-void		drop_fork(t_philo *philo);
+int		drop_fork(t_philo *philo);
 //Output timestamp and action of philo
-void		announcer(int state, t_philo *philo);
+int		announcer(int state, t_philo *philo);
 //Check if philo are alive
 int			check_dead(t_philo *philo);
 

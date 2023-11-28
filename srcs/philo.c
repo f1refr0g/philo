@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 06:49:58 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/28 03:55:07 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,22 @@ void	*routine(void *input)
 		ft_usleep((philo->tte) / 2);
 	while (1)
 	{
-		if (is_finished(philo) != 1)
-		{
-			pick_fork(philo);
-			if (ft_checkdead(philo) == 1)
-				break ;
-			announcer(EATING, philo);
-			drop_fork(philo);
-			philo->mcount++;
-			if (ft_checkdead(philo) == 1 || philo->mcount == philo->neat)
-				break ;
-			if (philo->mcount != philo->neat || ft_checkdead(philo) != 1)
-				announcer(THINKING, philo);
-		}
-		else
+		if (pick_fork(philo) == 1)
 			break ;
+		if (announcer(EATING, philo) == 1)
+			break ;
+		if (drop_fork(philo) == 1)
+			break ;
+		philo->mcount++;
+		if (philo->mcount == philo->neat)
+			break ;
+		if (announcer(THINKING, philo) == 1)
+			break ;		
 	}
-	// printf("philo a terminer\n");
-	return (input);
+	pthread_mutex_lock(&philo->data->lock);
+	philo->data->pfini += 1;
+	pthread_mutex_unlock(&philo->data->lock);
+return (input);
 }
 
 void	philo_init(t_d *data)
