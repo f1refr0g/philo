@@ -13,7 +13,7 @@ PLAN du lundi 27 novembre
 void	*routine(void *input)
 {
 	t_philo	*philo;
-
+  
 	philo = (t_philo *) input;
 	if (philo->id % 2 == 0)
 		ft_usleep((philo->tte) / 2);

@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/28 03:55:07 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/28 08:17:51 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	*routine(void *input)
 	pthread_mutex_lock(&philo->data->lock);
 	philo->data->pfini += 1;
 	pthread_mutex_unlock(&philo->data->lock);
+	pthread_mutex_unlock(&philo->rfork);
+	printf("tortue fin routine id : %d \n", philo->id);
 return (input);
 }
 
@@ -96,12 +98,15 @@ int	main(int ac, char **av)
 	pthread_mutex_init(&data.lock, NULL);
 	thread_init(&data);
 	ft_death(&data);
+	printf("tortue ares ft_death\n");
 	i = 0;
 	while (i < data.nphilo)
 	{
 		pthread_join(data.task[i], NULL);
+		printf("thread %d joined \n", i);
 		i++;
 	}
+	printf("apres thread join");
 	clear_sim(&data);
 	return (0);
 }
