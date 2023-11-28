@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/28 03:34:30 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/11/28 06:23:15 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	ft_death(t_d *data)
 	while (i < data->nphilo)
 	{
 		pthread_mutex_lock(&data->lock);
+		if (data->pfini == data->nphilo)
+			{
+				pthread_mutex_unlock(&data->lock);
+				return ;
+			}
 		if (((u_int64_t)(get_time() - (data->philo[i].lmeal))
 			> (uint64_t)data->ttd))
 		{
