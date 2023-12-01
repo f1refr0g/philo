@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:45:31 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/28 08:17:51 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:53:14 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,24 @@ void	*routine(void *input)
 	if (philo->id % 2 == 0)
 		ft_usleep((philo->tte) / 2);
 	while (1)
-	{
+	{	printf("routine philo s1 %d\n", philo->id);
 		if (pick_fork(philo) == 1)
 			break ;
+			printf("routine philo s2 %d\n", philo->id);
 		if (announcer(EATING, philo) == 1)
 			break ;
+			printf("routine philo s3 %d\n", philo->id);
 		if (drop_fork(philo) == 1)
 			break ;
 		philo->mcount++;
+		printf("routine philo s4 %d\n", philo->id);
 		if (philo->mcount == philo->neat)
 			break ;
+			printf("routine philo s5 %d\n", philo->id);
 		if (announcer(THINKING, philo) == 1)
 			break ;		
 	}
+	printf("sortie de boucle id : %d\n", philo->id);
 	pthread_mutex_lock(&philo->data->lock);
 	philo->data->pfini += 1;
 	pthread_mutex_unlock(&philo->data->lock);
@@ -98,15 +103,15 @@ int	main(int ac, char **av)
 	pthread_mutex_init(&data.lock, NULL);
 	thread_init(&data);
 	ft_death(&data);
-	printf("tortue ares ft_death\n");
+	// printf("tortue ares ft_death\n");
 	i = 0;
 	while (i < data.nphilo)
 	{
 		pthread_join(data.task[i], NULL);
-		printf("thread %d joined \n", i);
+		// printf("thread %d joined \n", i);
 		i++;
 	}
-	printf("apres thread join");
+	// printf("apres thread join");
 	clear_sim(&data);
 	return (0);
 }
