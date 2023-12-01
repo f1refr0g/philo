@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:54:13 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/28 03:48:59 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:47:02 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@ void	clear_sim(t_d *data)
 {
 	int	i;
 
-	i = 0;
-	// pthread_mutex_destroy(&data->msg);
-	// pthread_mutex_destroy(&data->lock);
-	// while (i < data->nphilo)
-	// {
-	// 	pthread_join(data->task[i], NULL);
-	// 	i++;
-	// }
 	i = 0;
 	if (data->task != NULL)
 		free(data->task);
@@ -49,22 +41,18 @@ int	announcer(int state, t_philo *philo)
 	{
 		if (state == SLEEPING)
 		{
-			printf("%lld ms %d is sleeping\n",
-				(get_time() - philo->start), philo->id);
+			printf("%lld ms %d is sleeping\n", ft_ts(philo), philo->id);
 			ft_usleep((philo->tts));
 		}
 		else if (state == FORK)
-			printf("%lld ms %d has taken a fork\n",
-				(get_time() - philo->start), philo->id);
+			printf("%lld ms %d has taken a fork\n", ft_ts(philo), philo->id);
 		else if (state == EATING)
 		{
-			printf("%lld ms %d is eating\n",
-				(get_time() - philo->start), philo->id);
+			printf("%lld ms %d is eating\n", ft_ts(philo), philo->id);
 			ft_usleep((philo->data->tte));
 		}
 		else if (state == THINKING)
-			printf("%lld ms %d is thinking\n",
-				(get_time() - philo->start), philo->id);
+			printf("%lld ms %d is thinking\n", ft_ts(philo), philo->id);
 	}
 	return (0);
 }

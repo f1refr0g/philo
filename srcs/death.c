@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:26:25 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/12/01 11:48:16 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:15:16 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void	ft_death(t_d *data)
 		{
 			pthread_mutex_lock(&data->msg);
 			data->dead = 1;
-			printf("%lld ms %d died\n",
-				(get_time() - data->start), i + 1);
+			printf("%lld ms %d died\n", (get_time() - data->start), i + 1);
 			pthread_mutex_unlock(&data->msg);
 			break ;
 		}
@@ -53,5 +52,4 @@ void	ft_death(t_d *data)
 		pthread_mutex_unlock(&data->lock);
 	}
 	pthread_mutex_unlock(&data->lock);
-	printf("did unlock at ft_dead\n");
 }

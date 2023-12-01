@@ -6,7 +6,7 @@
 /*   By: abeaudet <abeaudetfr0g42@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:09:39 by abeaudet          #+#    #+#             */
-/*   Updated: 2023/11/27 05:16:52 by abeaudet         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:44:43 by abeaudet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	set_philo(t_philo *philo, t_d *data, int i)
 	philo->neat = data->neat;
 	philo->start = data->start;
 	philo->nphilo = data->nphilo;
+}
+
+u_int64_t	ft_ts(t_philo *philo)
+{
+	return (get_time() - philo->start);
 }
